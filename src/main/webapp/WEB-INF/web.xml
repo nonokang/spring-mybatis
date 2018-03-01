@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+  <display-name>spring-mybatis</display-name>
+  <!-- Spring MVC配置 -->
+  	<!-- ================================================= -->
+  <servlet>
+  	<servlet-name>springDispatcher</servlet-name>
+  	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  	<!-- 可以自定义servlet.xml配置文件的位置和名称。默认配置在WEB-INF目录下，名称为【<servlet-name>】 -->
+   <init-param>
+  		<param-name>contextConfigLocation</param-name>
+      	<param-value>/WEB-INF/spring-servlet.xml</param-value><!-- 配置文件在WEB-INF下的写法-->
+<!--       <param-value>classpath:spring-servlet.xml</param-value>配置文件在classpath下的写法 -->
+  	</init-param>
+  	<load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>springDispatcher</servlet-name>
+  	<url-pattern>/</url-pattern>
+  </servlet-mapping>
+  
+  <!-- druid监控  访问监控页面：http://ip:port/projectName/druid/index.html-->
+   	<!-- <filter>
+      <filter-name>DruidWebStatFilter</filter-name>
+      <filter-class>com.alibaba.druid.support.http.WebStatFilter</filter-class>
+      <init-param>
+       	<param-name>exclusions</param-name>
+       	<param-value>*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*</param-value>
+      	</init-param>
+	</filter>
+	<filter-mapping>
+     	<filter-name>DruidWebStatFilter</filter-name>
+     	<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<servlet>
+    	<servlet-name>DruidStatView</servlet-name>
+    	<servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>  
+	</servlet>   
+	<servlet-mapping>
+    	<servlet-name>DruidStatView</servlet-name>
+    	<url-pattern>/druid/*</url-pattern>
+	</servlet-mapping> -->
+	
+  
+<!--   登陆超时时间设置 -->
+  <!-- <session-config>
+  	<session-timeout>15</session-timeout>
+  </session-config> -->
+</web-app>
