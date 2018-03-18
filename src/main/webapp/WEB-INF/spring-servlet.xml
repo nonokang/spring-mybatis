@@ -25,6 +25,9 @@
 	<!-- 使用mybatis框架 -->
 	<import resource="spring-mybatis.xml"/>
 	
+	<!-- 默认访问跳转到登录页面，即定义无Controller的path<->view直接映射 -->
+    <mvc:view-controller path="/" view-name="redirect:/login/index"/>
+	
     <!-- 采用注解方式配置MVC -->
     <mvc:annotation-driven>
         <mvc:message-converters>
@@ -37,6 +40,18 @@
             </bean>
         </mvc:message-converters>
     </mvc:annotation-driven>
+	
+	<mvc:interceptors>  
+	   	<!--  使用bean定义一个Interceptor，直接定义在mvc:interceptors根下面的Interceptor将拦截所有的请求   -->
+	    <mvc:interceptor>  
+	        <!-- 进行拦截：/**表示拦截所有controller -->
+	        <mvc:mapping path="/**" />
+	        <!-- 登录路径不进行拦截 -->
+	        <mvc:exclude-mapping path="/login/index"/>
+	       	<!-- 请求拦截器 -->
+	        <bean class="com.spring.mybatis.utils.RequestInterceptor"/>  
+	    </mvc:interceptor>  
+	</mvc:interceptors> 
 	
 
 	<!-- 配置视图解析器 -->

@@ -6,6 +6,7 @@
 <script type="text/javascript" src="<%=request.getContextPath()%>/assets/plugin/layui/layui.js"></script>
 <!-- jquery插件 -->
 <script type="text/javascript" src="<%=request.getContextPath()%>/assets/plugin/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/assets/js/comm.js"></script>
 <title>测试界面</title>
 </head>
 <style>
@@ -61,6 +62,11 @@
 </script>
 
 <script>
+
+	$(function(){
+		comm.initSettings();
+	})
+	
 	//定义元素事件（如：批量操作）
 	layui.use('element', function(){
 	  	  var element = layui.element;
@@ -175,7 +181,7 @@
 		    	  if(_ids.length > 0){
 		              $.ajax({
 		                    type: 'post',
-		                    url: '/spring-jpa/people/opera',
+		                    url: '/spring-mybatis/people/opera',
 		                    dataType: 'json',
 	 	                    data: {
 	 	                    	ids : _ids.join(','),
